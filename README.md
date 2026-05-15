@@ -1,5 +1,6 @@
-# My ThinkPad T430 Homelab Setup
 # ThinkPad T430 Hybrid Cloud Homelab
+
+### My ThinkPad T430 Homelab Setup
 
 An enterprise-grade personal cloud node built on legacy hardware, designed to test Linux System Administration, containerized networks, and AWS hybrid workflows.
 
