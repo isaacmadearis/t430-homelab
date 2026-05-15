@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  homelab-web:
+    image: nginx:alpine
+    container_name: homelab_test_node
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    volumes:
+      - web_data:/usr/share/nginx/html
+
+volumes:
+  web_data:
