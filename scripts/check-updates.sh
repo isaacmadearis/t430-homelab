@@ -21,6 +21,7 @@ set -uo pipefail
 
 # ---- config -----------------------------------------------------------------
 ENV_FILE="${HOMELAB_ENV_FILE:-/etc/homelab-monitor.env}"
+# shellcheck source=/dev/null
 [ -f "$ENV_FILE" ] && . "$ENV_FILE"
 
 NTFY_URL="${NTFY_URL:-}"
@@ -103,6 +104,7 @@ add ""
 add "## Git (homelab repo)"
 if [ -d "$REPO_DIR/.git" ]; then
   git -C "$REPO_DIR" fetch -q origin 2>/dev/null || true
+  # shellcheck disable=SC1083  # @{u} is a git upstream refspec, not a shell brace expansion
   read -r ahead behind < <(git -C "$REPO_DIR" rev-list --left-right --count HEAD...@{u} 2>/dev/null | tr '\t' ' ' || echo "0 0")
   if [ "${behind:-0}" -gt 0 ]; then add "  ⚠ behind origin by $behind commit(s) — pull pending"; flag; fi
   if [ "${ahead:-0}" -gt 0 ]; then add "  ⚠ ahead of origin by $ahead commit(s) — push pending"; flag; fi

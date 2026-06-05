@@ -3,6 +3,7 @@
 # T430 Homelab to AWS S3 Backup Script
 # Aligned with B.S. Cloud & Network Engineering studies
 
+# shellcheck disable=SC2034  # used in the sync command below once IAM is bound
 BACKUP_DIR="/home/imadear/t430-homelab/configs"
 S3_BUCKET="s3://your-wgu-homelab-bucket-name"
 DATE=$(date +%Y-%m-%d)
