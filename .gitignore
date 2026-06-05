@@ -1,0 +1,21 @@
+# --- Secrets / DLP (Zero Trust: never commit real credentials) ---
+.env
+*.env
+.env.*
+# ...but keep documentation templates with placeholder values
+!*.env.example
+!.env.example
+
+# Common secret material
+*.key
+*.pem
+*_secret
+secrets/
+*.gpg
+*.kdbx
+
+# --- Local / runtime cruft ---
+*.bak
+*.bak.*
+*.log
+.DS_Store

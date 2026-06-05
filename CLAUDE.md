@@ -2,6 +2,8 @@
 
 This repository documents the bare-metal, containerized, and hybrid-cloud infrastructure for System Engineer Isaac Madearis. Follow these architectural boundaries implicitly. Do not guess commands.
 
+> **Assistant behavior & engineering rules:** see @.github/claude-instructions.md
+
 ---
 
 ## 🛠️ The Tech Stack Environment Context
