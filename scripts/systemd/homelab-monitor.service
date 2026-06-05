@@ -1,0 +1,18 @@
+[Unit]
+Description=Homelab update & drift checker (T430)
+Documentation=https://github.com/isaacmadearis/t430-homelab
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# Run as root so `apt update` and docker socket access work.
+ExecStart=/home/imadear/t430-homelab/scripts/check-updates.sh
+# Keep the T430's older CPU calm: low priority, no spikes (guardrail #3).
+Nice=15
+IOSchedulingClass=idle
+CPUSchedulingPolicy=idle
+EnvironmentFile=-/etc/homelab-monitor.env
+
+[Install]
+WantedBy=multi-user.target

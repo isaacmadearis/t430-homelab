@@ -1,0 +1,14 @@
+[Unit]
+Description=Run the homelab update checker daily
+Documentation=https://github.com/isaacmadearis/t430-homelab
+
+[Timer]
+# Daily at 04:30 local time — off-peak for the shared residential WFH space.
+OnCalendar=*-*-* 04:30:00
+# If the box was asleep/off at the scheduled time, run shortly after boot.
+Persistent=true
+# Spread by up to 5 min so it never lands on a hard tick.
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target
