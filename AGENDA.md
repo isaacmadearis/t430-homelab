@@ -5,7 +5,7 @@
 
 ## Phase 1 — Data Tier Hardening (Immediate / Blocking)
 
-- [ ] **Remediate DLP violation** in `projects/wordpress-mysql/docker-compose.yml`
+- [x] **Remediate DLP violation** in `projects/wordpress-mysql/docker-compose.yml`
   - Move `MYSQL_ROOT_PASSWORD`, `MYSQL_USER`, `MYSQL_PASSWORD` out of the compose file and into an `.env` file
   - Confirm `.env` is present in `.gitignore` before committing
   - Replace inline values with `${VAR_NAME}` references
