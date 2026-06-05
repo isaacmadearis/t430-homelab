@@ -11,8 +11,8 @@ ARCH="x86_64"
 mkdir -p "$INSTALL_DIR"
 
 # ---- shellcheck -------------------------------------------------------------
-if command -v shellcheck &>/dev/null; then
-  echo "shellcheck already installed: $(shellcheck --version | grep version:)"
+if [[ -x "$INSTALL_DIR/shellcheck" ]]; then
+  echo "shellcheck already installed: $("$INSTALL_DIR/shellcheck" --version | grep version:)"
 else
   echo "Installing shellcheck..."
   TMP=$(mktemp -d)
