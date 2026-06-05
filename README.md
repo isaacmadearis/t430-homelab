@@ -4,6 +4,18 @@
 
 An enterprise-grade personal cloud node built on legacy hardware, designed to test Linux System Administration, containerized networks, and AWS hybrid workflows.
 
+## 🛠️ Getting Started
+
+Clone the repo and run the setup script to bootstrap local dev tooling (shellcheck, GPG signing config):
+
+```bash
+git clone https://github.com/isaacmadearis/t430-homelab.git
+cd t430-homelab
+./scripts/setup.sh
+```
+
+Safe to re-run — skips anything already installed. Installs `shellcheck` to `~/.local/bin` without requiring sudo.
+
 ## 🚀 Architecture Overview
 - **Host OS:** Ubuntu Server (Headless)
 - **Control Plane:** CasaOS / Portainer (Docker Engines)
