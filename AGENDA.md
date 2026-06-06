@@ -24,8 +24,8 @@
 
 ## Phase 3 — Ingress & Public Exposure (Upcoming)
 
-- [ ] Deploy containerized `cloudflared` as the outbound tunnel agent
-- [ ] Map public subdomain(s) via Cloudflare Zero Trust tunnel rules
+- [x] Deploy containerized `cloudflared` as the outbound tunnel agent
+- [x] Map public subdomain(s) via Cloudflare Zero Trust tunnel rules (`wp.madearlabs.com`)
 - [ ] Remove any direct UFW port exposure for WordPress (port 80/8080) once tunnel is live
 - [ ] Capture `docker network inspect lab-isolated-net` screenshot as network proof
 

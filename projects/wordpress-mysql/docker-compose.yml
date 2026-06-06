@@ -15,6 +15,18 @@ services:
     networks:
       - lab-isolated-net
 
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cf_tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    env_file:
+      - .env
+    environment:
+      TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN}
+    networks:
+      - lab-isolated-net
+
   wordpress:
     image: wordpress:latest
     container_name: wp_frontend
