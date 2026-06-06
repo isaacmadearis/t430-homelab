@@ -31,6 +31,23 @@
 
 ---
 
+## Phase 5 — Nextcloud Subdomain Deployment (`nextcloud.Madear.com`)
+
+- [ ] Create a dedicated `projects/nextcloud/docker-compose.yml` stack
+  - Use `nextcloud:latest` image with a persistent named volume (`nextcloud_data`)
+  - Back with a `mariadb:10.11` (or `postgres:16`) data container and named volume (`nextcloud_db`)
+  - Source all DB credentials from `.env` — no cleartext secrets in compose file
+  - Attach both containers to `lab-isolated-net` as `external: true`
+- [ ] Add Cloudflare Zero Trust tunnel rule mapping `nextcloud.Madear.com` → internal Nextcloud container port
+- [ ] Harden Nextcloud config (`config/config.php`)
+  - Set `'trusted_domains'` to include `nextcloud.Madear.com`
+  - Set `'overwriteprotocol' => 'https'` and `'overwrite.cli.url'`
+- [ ] Remove any direct UFW port exposure once tunnel is live
+- [ ] Validate end-to-end: Nextcloud login page loads at `https://nextcloud.Madear.com`
+- [ ] Capture `docker network inspect lab-isolated-net` screenshot as network proof
+
+---
+
 ## Phase 4 — AWS Cloud Identity (Parked)
 
 - [ ] Document LDAP bridge config between AWS AD DS (`isaaclab.local`) and Ubuntu osTicket node
