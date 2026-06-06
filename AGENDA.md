@@ -14,11 +14,11 @@
 
 ## Phase 2 — WordPress Presentation Layer (Next)
 
-- [ ] Add `wordpress:latest` service to the existing compose stack
-- [ ] Link WordPress to `wp_database` via `WORDPRESS_DB_*` environment variables (sourced from `.env`)
-- [ ] Mount a named volume `wp_data` for WordPress content persistence
-- [ ] Attach to `lab-isolated-net` (no host network exposure)
-- [ ] Validate end-to-end: MySQL ready → WordPress installer loads in browser
+- [x] Add `wordpress:latest` service to the existing compose stack
+- [x] Link WordPress to `wp_database` via `WORDPRESS_DB_*` environment variables (sourced from `.env`)
+- [x] Mount a named volume `wp_data` for WordPress content persistence
+- [x] Attach to `lab-isolated-net` (no host network exposure)
+- [x] Validate end-to-end: MySQL ready → WordPress installer loads in browser
 
 ---
 

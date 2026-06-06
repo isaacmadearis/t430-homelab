@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   wordpress-db:
     image: mysql:8.0
@@ -17,8 +15,29 @@ services:
     networks:
       - lab-isolated-net
 
+  wordpress:
+    image: wordpress:latest
+    container_name: wp_frontend
+    restart: unless-stopped
+    depends_on:
+      - wordpress-db
+    env_file:
+      - .env
+    environment:
+      WORDPRESS_DB_HOST: wordpress-db
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - wp_data:/var/www/html
+    ports:
+      - "8080:80"
+    networks:
+      - lab-isolated-net
+
 volumes:
   db_data:
+  wp_data:
 
 networks:
   lab-isolated-net:
