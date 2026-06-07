@@ -31,7 +31,7 @@
 
 ---
 
-## Phase 5 — Nextcloud Subdomain Deployment (`nextcloud.Madear.com`)
+## Phase 5 — Nextcloud Subdomain Deployment (`nextcloud.Madearlabs.com`)
 
 - [ ] Create a dedicated `projects/nextcloud/docker-compose.yml` stack
   - Use `nextcloud:latest` image with a persistent named volume (`nextcloud_data`)
@@ -40,10 +40,10 @@
   - Attach both containers to `lab-isolated-net` as `external: true`
 - [ ] Add Cloudflare Zero Trust tunnel rule mapping `nextcloud.Madearlabs.com` → internal Nextcloud container port
 - [ ] Harden Nextcloud config (`config/config.php`)
-  - Set `'trusted_domains'` to include `nextcloud.Madear.com`
+  - Set `'trusted_domains'` to include `nextcloud.Madearlabs.com`
   - Set `'overwriteprotocol' => 'https'` and `'overwrite.cli.url'`
 - [ ] Remove any direct UFW port exposure once tunnel is live
-- [ ] Validate end-to-end: Nextcloud login page loads at `https://nextcloud.Madear.com`
+- [ ] Validate end-to-end: Nextcloud login page loads at `https://nextcloud.Madearlabs.com`
 - [ ] Capture `docker network inspect lab-isolated-net` screenshot as network proof
 
 ---
