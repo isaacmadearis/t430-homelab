@@ -31,6 +31,15 @@
 
 ---
 
+---
+
+## Phase 4 — AWS Cloud Identity (Parked)
+
+- [ ] Document LDAP bridge config between AWS AD DS (`isaaclab.local`) and Ubuntu osTicket node
+- [ ] Validate Tailscale connectivity between AWS nodes and T430
+
+---
+
 ## Phase 5 — Nextcloud Subdomain Deployment (`nextcloud.Madearlabs.com`)
 
 - [ ] Create a dedicated `projects/nextcloud/docker-compose.yml` stack
@@ -46,12 +55,7 @@
 - [ ] Validate end-to-end: Nextcloud login page loads at `https://nextcloud.Madearlabs.com`
 - [ ] Capture `docker network inspect lab-isolated-net` screenshot as network proof
 
----
 
-## Phase 4 — AWS Cloud Identity (Parked)
-
-- [ ] Document LDAP bridge config between AWS AD DS (`isaaclab.local`) and Ubuntu osTicket node
-- [ ] Validate Tailscale connectivity between AWS nodes and T430
 
 ---
 
