@@ -38,7 +38,7 @@
   - Back with a `mariadb:10.11` (or `postgres:16`) data container and named volume (`nextcloud_db`)
   - Source all DB credentials from `.env` — no cleartext secrets in compose file
   - Attach both containers to `lab-isolated-net` as `external: true`
-- [ ] Add Cloudflare Zero Trust tunnel rule mapping `nextcloud.Madear.com` → internal Nextcloud container port
+- [ ] Add Cloudflare Zero Trust tunnel rule mapping `nextcloud.Madearlabs.com` → internal Nextcloud container port
 - [ ] Harden Nextcloud config (`config/config.php`)
   - Set `'trusted_domains'` to include `nextcloud.Madear.com`
   - Set `'overwriteprotocol' => 'https'` and `'overwrite.cli.url'`
