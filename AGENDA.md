@@ -49,6 +49,33 @@
 
 ---
 
+## Phase 4.5 — Cloudflare Access 2FA Enforcement (Upcoming)
+> Lock down `wp.madearlabs.com` and `casa.madearlabs.com` behind Cloudflare Access with mandatory Two-Factor Authentication
+
+- [ ] **Cloudflare Zero Trust → Settings → Authentication**
+  - Enable One-time PIN (OTP) or connect an identity provider (Google / GitHub) as the IdP
+  - Enforce `Require MFA` at the IdP policy level
+- [ ] **Create an Access Application for `wp.madearlabs.com`**
+  - Type: Self-hosted
+  - Domain: `wp.madearlabs.com`
+  - Session duration: `24h` (or tighten to `1h` for stricter posture)
+  - Policy: Allow → Rule: Emails ending in `@madearlabs.com` (or explicit email list)
+  - Enable `Purpose Justification` if audit logging is desired
+- [ ] **Create an Access Application for `casa.madearlabs.com`**
+  - Same IdP and MFA requirement as above
+  - Domain: `casa.madearlabs.com`
+  - Restrict to the same trusted email list
+- [ ] **Validate end-to-end login flow**
+  - Browse to `https://wp.madearlabs.com` from a clean browser session — confirm Cloudflare Access login wall appears
+  - Authenticate with IdP → confirm 2FA challenge fires (TOTP code or OTP email)
+  - Confirm successful passthrough to WordPress/CasaOS behind the gate
+  - Repeat for `https://casa.madearlabs.com`
+- [ ] **Verify bypass is impossible**
+  - Confirm direct container port is not reachable from the public internet (tunnel-only ingress)
+  - Confirm Cloudflare proxy (orange cloud) is enabled on both DNS records
+
+---
+
 ## Phase 5 — AWS Cloud Identity (Parked)
 
 - [ ] Document LDAP bridge config between AWS AD DS (`isaaclab.local`) and Ubuntu osTicket node
