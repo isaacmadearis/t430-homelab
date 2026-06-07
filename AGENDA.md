@@ -29,7 +29,7 @@
 - [x] Remove any direct UFW port exposure for WordPress (port 80/8080) once tunnel is live
 - [x] Capture `docker network inspect lab-isolated-net` screenshot as network proof
 
----
+
 
 ---
 
