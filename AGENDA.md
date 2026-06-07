@@ -55,6 +55,20 @@
 
 ---
 
+## Phase 6 — Notes Ingress (Upcoming)
+> Self-hosted FOSS notes app (SilverBullet) exposed at `notes.madearlabs.com`
+
+- [ ] Add a `silverbullet` service to the compose stack
+      (`ghcr.io/silverbulletmd/silverbullet:latest`)
+- [ ] Mount a named volume `sb_data` at `/space` for note/markdown persistence
+- [ ] Attach to `lab-isolated-net` with **no host port exposure** (web UI on internal :3000)
+- [ ] Set basic auth via `SB_USER` (`user:pass`) sourced from `.env` — no cleartext in Git
+- [ ] Add public hostname `notes.madearlabs.com` → `http://silverbullet:3000`
+      as a Cloudflare Zero Trust tunnel rule (reuse the existing `cf_tunnel` agent)
+- [ ] Validate end-to-end: container healthy → `notes.madearlabs.com` loads over HTTPS
+
+---
+
 ## Standing Maintenance Checklist
 
 - [ ] GPG signing active: `export GPG_TTY=$(tty)` before any commit session over SSH
