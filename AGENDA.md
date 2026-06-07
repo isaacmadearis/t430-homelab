@@ -33,14 +33,30 @@
 
 ---
 
-## Phase 4 — AWS Cloud Identity (Parked)
+## Phase 4 — CasaOS HTTPS via Caddy + Cloudflare DNS-01 (Status: Complete)
+> CasaOS dashboard reachable over valid TLS at `https://casa.madearlabs.com`
+
+- [x] Confirmed CasaOS reachable at `100.x.y.z` (Tailscale IP) on port 80
+- [x] Added A record in Cloudflare: `casa.madearlabs.com` → `100.x.y.z` (DNS only, no proxy)
+- [x] Installed Go (`golang-go`) and `xcaddy`
+- [x] Compiled Caddy v2.11.4 with `caddy-dns/cloudflare` plugin via `xcaddy`
+- [x] Moved binary to `/usr/local/bin/caddy`
+- [x] Created `/etc/caddy/caddy.env` with Cloudflare API token (`chmod 600`)
+- [x] Created `/etc/caddy/Caddyfile` with DNS-01 TLS config and `auto_https disable_redirects`
+- [x] Created `/etc/systemd/system/caddy.service` with `EnvironmentFile` pointing to `caddy.env`
+- [x] Let's Encrypt certificate issued successfully for `casa.madearlabs.com`
+- [x] CasaOS now accessible at `https://casa.madearlabs.com` with valid padlock
+
+---
+
+## Phase 5 — AWS Cloud Identity (Parked)
 
 - [ ] Document LDAP bridge config between AWS AD DS (`isaaclab.local`) and Ubuntu osTicket node
 - [ ] Validate Tailscale connectivity between AWS nodes and T430
 
 ---
 
-## Phase 5 — Nextcloud Subdomain Deployment (`nextcloud.madearlabs.com`)
+## Phase 6 — Nextcloud Subdomain Deployment (`nextcloud.madearlabs.com`)
 
 - [ ] Create a dedicated `projects/nextcloud/docker-compose.yml` stack
   - Use `nextcloud:latest` image with a persistent named volume (`nextcloud_data`)
@@ -59,7 +75,7 @@
 
 ---
 
-## Phase 6 — Notes Ingress (Upcoming)
+## Phase 7 — Notes Ingress (Upcoming)
 > Self-hosted FOSS notes app (SilverBullet) exposed at `notes.madearlabs.com`
 
 - [ ] Add a `silverbullet` service to the compose stack
