@@ -116,6 +116,21 @@
 
 ---
 
+## Phase 8 — Portfolio Evidence Capture & Organization (Upcoming)
+> Screenshot proof of completed projects for the portfolio site.
+> Images live under `docs/portfolio/<project>/` — scrub secrets before committing.
+
+- [ ] **01 — Hardened Base OS:** `sudo ufw status verbose` (22/80/8080 rules) + `uptime` showing headless run
+- [ ] **02 — WordPress + MySQL:** browser at `wp.madearlabs.com`; `docker logs wp_database` showing "ready for connections"; `docker network inspect lab-isolated-net`; `docker ps` with stack up
+- [ ] **03 — Cloudflare Tunnel:** Zero Trust dashboard showing tunnel HEALTHY; `docker logs cf_tunnel` with registered connections; public HTTPS padlock
+- [ ] **04 — Caddy + DNS-01 TLS:** `casa.madearlabs.com` padlock + cert details; `systemctl status caddy`; journal line confirming cert issued
+- [ ] **05 — Tailscale Mesh:** `tailscale status` showing all four nodes
+- [ ] **06 — GPG Signing:** pinentry prompt mid-commit over SSH; `git log --show-signature` with "Good signature"
+- [ ] Commit scrubbed images under `docs/portfolio/<project>/` (no tokens, passwords, or full Tailscale IPs)
+- [ ] Publish `docs/portfolio/README.md` index with thumbnail links
+
+---
+
 ## Standing Maintenance Checklist
 
 - [ ] GPG signing active: `export GPG_TTY=$(tty)` before any commit session over SSH
