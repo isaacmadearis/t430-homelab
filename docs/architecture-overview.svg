@@ -1,0 +1,100 @@
+<svg width="720" height="900" viewBox="0 0 720 900" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>T430 homelab architecture overview</title>
+<desc>Three-part overview: ingress flow over Tailscale through Caddy, the WordPress container stack, and the Caddy DNS-01 TLS handshake with Cloudflare and Let's Encrypt.</desc>
+<rect width="720" height="900" fill="#ffffff"/>
+
+<text x="20" y="36" font-family="sans-serif" font-size="20" font-weight="500" fill="#2C2C2A">T430 homelab — architecture overview</text>
+<text x="20" y="58" font-family="sans-serif" font-size="13" fill="#5F5E5A">madearlabs.com — self-hosted on a Lenovo ThinkPad T430</text>
+
+<text x="20" y="100" font-family="sans-serif" font-size="15" font-weight="500" fill="#2C2C2A">1. Ingress flow</text>
+<g transform="translate(20,115) scale(1)">
+<svg width="680" height="300" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<rect x="40" y="30" width="180" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+<text x="130" y="52" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#2C2C2A">Tailscale client</text>
+<text x="130" y="70" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#444441">Mac, phone, laptop</text>
+<line x1="220" y1="58" x2="270" y2="58" stroke="#73726c" stroke-width="1" marker-end="url(#a1)"/>
+<text x="245" y="44" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#444441">HTTPS</text>
+<rect x="270" y="20" width="180" height="76" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="360" y="42" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#04342C">Caddy</text>
+<text x="360" y="60" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#085041">Reverse proxy, T430</text>
+<text x="360" y="78" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#085041">TLS via Cloudflare DNS-01</text>
+<line x1="450" y1="46" x2="500" y2="46" stroke="#73726c" stroke-width="1" marker-end="url(#a1)"/>
+<line x1="450" y1="70" x2="500" y2="70" stroke="#73726c" stroke-width="1" marker-end="url(#a1)"/>
+<rect x="500" y="20" width="140" height="44" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="570" y="42" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#26215C">casa.madearlabs.com</text>
+<rect x="500" y="74" width="140" height="44" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text x="570" y="96" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#4A1B0C">wp.madearlabs.com</text>
+<rect x="40" y="140" width="600" height="120" rx="20" fill="none" stroke="#B4B2A9" stroke-width="0.5" stroke-dasharray="4 4"/>
+<text x="60" y="162" font-family="sans-serif" font-size="12" fill="#5F5E5A">Tailscale-only — no public port exposure</text>
+<rect x="100" y="190" width="200" height="44" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="200" y="212" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#26215C">CasaOS dashboard</text>
+<rect x="380" y="190" width="220" height="44" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text x="490" y="212" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#4A1B0C">WordPress + MySQL stack</text>
+</svg>
+</g>
+
+<line x1="20" y1="440" x2="700" y2="440" stroke="#D3D1C7" stroke-width="1"/>
+
+<text x="20" y="475" font-family="sans-serif" font-size="15" font-weight="500" fill="#2C2C2A">2. WordPress container stack</text>
+<g transform="translate(20,490)">
+<svg width="680" height="280" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<text x="40" y="40" font-family="sans-serif" font-size="12" fill="#444441">Cloudflare</text>
+<line x1="55" y1="50" x2="100" y2="95" stroke="#73726c" stroke-width="1" marker-end="url(#a2)"/>
+<rect x="60" y="80" width="560" height="170" rx="20" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+<text x="80" y="105" font-family="sans-serif" font-size="14" font-weight="500" fill="#173404">lab-isolated-net</text>
+<text x="80" y="122" font-family="sans-serif" font-size="12" fill="#27500A">Docker bridge, external: true</text>
+<rect x="90" y="150" width="150" height="56" rx="12" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text x="165" y="172" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#4A1B0C">cf_tunnel</text>
+<text x="165" y="190" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#712B13">cloudflared</text>
+<line x1="240" y1="178" x2="290" y2="178" stroke="#73726c" stroke-width="1" marker-end="url(#a2)"/>
+<rect x="290" y="150" width="150" height="56" rx="12" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text x="365" y="172" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#4A1B0C">wp_frontend</text>
+<text x="365" y="190" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#712B13">WordPress, PHP 8.3</text>
+<line x1="440" y1="178" x2="490" y2="178" stroke="#73726c" stroke-width="1" marker-end="url(#a2)"/>
+<rect x="490" y="150" width="110" height="56" rx="12" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="545" y="172" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#04342C">wp_database</text>
+<text x="545" y="190" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#085041">MySQL 8.0</text>
+<text x="365" y="240" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5F5E5A">Secrets sourced from .env — never committed to Git</text>
+</svg>
+</g>
+
+<line x1="20" y1="800" x2="700" y2="800" stroke="#D3D1C7" stroke-width="1"/>
+
+<text x="20" y="835" font-family="sans-serif" font-size="15" font-weight="500" fill="#2C2C2A">3. Caddy DNS-01 TLS handshake</text>
+<g transform="translate(20,850)">
+<svg width="680" height="200" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="a3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<rect x="20" y="0" width="130" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="85" y="22" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#04342C">Caddy</text>
+<text x="85" y="40" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#085041">on the T430</text>
+<line x1="150" y1="28" x2="200" y2="28" stroke="#73726c" stroke-width="1" marker-end="url(#a3)"/>
+<text x="175" y="14" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#444441">API token</text>
+<rect x="200" y="0" width="140" height="56" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="270" y="22" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#412402">Cloudflare DNS</text>
+<text x="270" y="40" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#633806">Creates TXT record</text>
+<line x1="340" y1="28" x2="390" y2="28" stroke="#73726c" stroke-width="1" marker-end="url(#a3)"/>
+<text x="365" y="14" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#444441">Validates</text>
+<rect x="390" y="0" width="140" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="460" y="22" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="500" fill="#26215C">Let's Encrypt</text>
+<text x="460" y="40" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#3C3489">Issues certificate</text>
+<line x1="460" y1="56" x2="460" y2="80" stroke="#73726c" stroke-width="1" marker-end="url(#a3)"/>
+<line x1="460" y1="80" x2="85" y2="80" stroke="#73726c" stroke-width="1"/>
+<line x1="85" y1="80" x2="85" y2="56" stroke="#73726c" stroke-width="1" marker-end="url(#a3)"/>
+<text x="270" y="96" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#444441">Cert returned to Caddy, used to serve HTTPS</text>
+</svg>
+</g>
+</svg>
