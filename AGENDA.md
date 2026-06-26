@@ -49,6 +49,33 @@
 
 ---
 
+## Phase 4.5 — Cloudflare Access 2FA Enforcement (Upcoming)
+> Lock down `wp.madearlabs.com` and `casa.madearlabs.com` behind Cloudflare Access with mandatory Two-Factor Authentication
+
+- [ ] **Cloudflare Zero Trust → Settings → Authentication**
+  - Enable One-time PIN (OTP) or connect an identity provider (Google / GitHub) as the IdP
+  - Enforce `Require MFA` at the IdP policy level
+- [ ] **Create an Access Application for `wp.madearlabs.com`**
+  - Type: Self-hosted
+  - Domain: `wp.madearlabs.com`
+  - Session duration: `24h` (or tighten to `1h` for stricter posture)
+  - Policy: Allow → Rule: Emails ending in `@madearlabs.com` (or explicit email list)
+  - Enable `Purpose Justification` if audit logging is desired
+- [ ] **Create an Access Application for `casa.madearlabs.com`**
+  - Same IdP and MFA requirement as above
+  - Domain: `casa.madearlabs.com`
+  - Restrict to the same trusted email list
+- [ ] **Validate end-to-end login flow**
+  - Browse to `https://wp.madearlabs.com` from a clean browser session — confirm Cloudflare Access login wall appears
+  - Authenticate with IdP → confirm 2FA challenge fires (TOTP code or OTP email)
+  - Confirm successful passthrough to WordPress/CasaOS behind the gate
+  - Repeat for `https://casa.madearlabs.com`
+- [ ] **Verify bypass is impossible**
+  - Confirm direct container port is not reachable from the public internet (tunnel-only ingress)
+  - Confirm Cloudflare proxy (orange cloud) is enabled on both DNS records
+
+---
+
 ## Phase 5 — AWS Cloud Identity (Parked)
 
 - [ ] Document LDAP bridge config between AWS AD DS (`isaaclab.local`) and Ubuntu osTicket node
@@ -86,6 +113,21 @@
 - [ ] Add public hostname `notes.madearlabs.com` → `http://silverbullet:3000`
       as a Cloudflare Zero Trust tunnel rule (reuse the existing `cf_tunnel` agent)
 - [ ] Validate end-to-end: container healthy → `notes.madearlabs.com` loads over HTTPS
+
+---
+
+## Phase 8 — Portfolio Evidence Capture & Organization (Upcoming)
+> Screenshot proof of completed projects for the portfolio site.
+> Images live under `docs/portfolio/<project>/` — scrub secrets before committing.
+
+- [ ] **01 — Hardened Base OS:** `sudo ufw status verbose` (22/80/8080 rules) + `uptime` showing headless run
+- [ ] **02 — WordPress + MySQL:** browser at `wp.madearlabs.com`; `docker logs wp_database` showing "ready for connections"; `docker network inspect lab-isolated-net`; `docker ps` with stack up
+- [ ] **03 — Cloudflare Tunnel:** Zero Trust dashboard showing tunnel HEALTHY; `docker logs cf_tunnel` with registered connections; public HTTPS padlock
+- [ ] **04 — Caddy + DNS-01 TLS:** `casa.madearlabs.com` padlock + cert details; `systemctl status caddy`; journal line confirming cert issued
+- [ ] **05 — Tailscale Mesh:** `tailscale status` showing all four nodes
+- [ ] **06 — GPG Signing:** pinentry prompt mid-commit over SSH; `git log --show-signature` with "Good signature"
+- [ ] Commit scrubbed images under `docs/portfolio/<project>/` (no tokens, passwords, or full Tailscale IPs)
+- [ ] Publish `docs/portfolio/README.md` index with thumbnail links
 
 ---
 
