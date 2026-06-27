@@ -124,7 +124,7 @@
 - [ ] **02 — WordPress + MySQL:** browser at `wp.madearlabs.com`; `docker logs wp_database` showing "ready for connections"; `docker network inspect lab-isolated-net`; `docker ps` with stack up
 - [ ] **03 — Cloudflare Tunnel:** Zero Trust dashboard showing tunnel HEALTHY; `docker logs cf_tunnel` with registered connections; public HTTPS padlock
 - [ ] **04 — Caddy + DNS-01 TLS:** `casa.madearlabs.com` padlock + cert details; `systemctl status caddy`; journal line confirming cert issued
-- [ ] **05 — Tailscale Mesh:** `tailscale status` showing all four nodes
+- [x] **05 — Tailscale Mesh:** `tailscale status` showing all four nodes
 - [ ] **06 — GPG Signing:** pinentry prompt mid-commit over SSH; `git log --show-signature` with "Good signature"
 - [ ] Commit scrubbed images under `docs/portfolio/<project>/` (no tokens, passwords, or full Tailscale IPs)
 - [ ] Publish `docs/portfolio/README.md` index with thumbnail links
