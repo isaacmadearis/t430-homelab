@@ -131,6 +131,19 @@
 
 ---
 
+## Phase 9 — SSH Hardening (Security / Pending Apply)
+> Triggered by failed login attempts from `127.0.0.1` using identity-derived
+> usernames. Runbook: `docs/portfolio/07-ssh-hardening/README.md`
+
+- [ ] Confirm key-based login works over Tailscale **before** disabling passwords
+- [ ] Disable password auth: `PasswordAuthentication no` in `/etc/ssh/sshd_config.d/10-hardening.conf` (`sshd -t` then restart)
+- [ ] Scope port 22 to the mesh: replace broad `22/tcp` UFW rule with `allow in on tailscale0 to any port 22 proto tcp`
+- [ ] Verify: password auth refused, `systemctl status ssh` still `active (running)`
+- [ ] (If recurs) capture the local client PID during a burst: `sudo ss -tnp | grep 127.0.0.1:22` → `ps -fp <PID>`
+- [ ] Capture evidence screenshots into `docs/portfolio/07-ssh-hardening/` and flip status to Complete
+
+---
+
 ## Standing Maintenance Checklist
 
 - [ ] GPG signing active: `export GPG_TTY=$(tty)` before any commit session over SSH
