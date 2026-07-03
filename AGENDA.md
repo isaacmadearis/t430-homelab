@@ -135,7 +135,7 @@
 > Triggered by failed login attempts from `127.0.0.1` using identity-derived
 > usernames. Runbook: `docs/portfolio/07-ssh-hardening/README.md`
 
-- [ ] Confirm key-based login works over Tailscale **before** disabling passwords
+- [x] Confirm key-based login works over Tailscale **before** disabling passwords
 - [ ] Disable password auth: `PasswordAuthentication no` in `/etc/ssh/sshd_config.d/10-hardening.conf` (`sshd -t` then restart)
 - [ ] Scope port 22 to the mesh: replace broad `22/tcp` UFW rule with `allow in on tailscale0 to any port 22 proto tcp`
 - [ ] Verify: password auth refused, `systemctl status ssh` still `active (running)`
