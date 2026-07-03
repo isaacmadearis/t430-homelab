@@ -40,7 +40,7 @@
 
 ## 4. Git Security & Cryptographic Commits
 - **GPG Commit Signing:** All commits are signed with an Ed25519 GPG keypair
-  (key ID `D3126B22975A0FEB`).
+  (key ID `644A3FB7D755AA80`).
 - **Headless SSH Binding:** Over headless Tailscale SSH, GPG needs an active TTY
   for pinentry. Before committing, bind the terminal:
   ```bash
