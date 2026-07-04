@@ -9,7 +9,7 @@ ACPI target overridden; edge firewall restricted to explicit UFW rules.
 
 ### UFW Ruleset
 > Command: `sudo ufw status verbose`
-> Expected: explicit ALLOW rules for 22/tcp, 80/tcp, 8080/tcp — nothing else.
+> Expected: `22/tcp` open anywhere, `80/tcp` scoped to `100.64.0.0/10` (Tailscale CGNAT), default deny incoming.
 
 <!-- Drop screenshot here and update the filename -->
 ![UFW ruleset](ufw-status-verbose.png)

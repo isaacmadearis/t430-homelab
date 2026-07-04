@@ -13,6 +13,7 @@ Images are scrubbed of secrets before commit — no tokens, passwords, or full T
 | 04 | [Caddy + DNS-01 TLS](04-caddy-dns01-tls/) | Complete | `casa.madearlabs.com` valid cert |
 | 05 | [Tailscale Mesh](05-tailscale-mesh/) | Complete | 4-node status |
 | 06 | [GPG Signing](06-gpg-signing/) | Complete | Pinentry prompt, signed log |
+| 07 | [SSH Hardening](07-ssh-hardening/) | Pending | Key-only auth, UFW scoped to `tailscale0` |
 
 ---
 

@@ -124,10 +124,23 @@
 - [ ] **02 — WordPress + MySQL:** browser at `wp.madearlabs.com`; `docker logs wp_database` showing "ready for connections"; `docker network inspect lab-isolated-net`; `docker ps` with stack up
 - [ ] **03 — Cloudflare Tunnel:** Zero Trust dashboard showing tunnel HEALTHY; `docker logs cf_tunnel` with registered connections; public HTTPS padlock
 - [ ] **04 — Caddy + DNS-01 TLS:** `casa.madearlabs.com` padlock + cert details; `systemctl status caddy`; journal line confirming cert issued
-- [ ] **05 — Tailscale Mesh:** `tailscale status` showing all four nodes
+- [x] **05 — Tailscale Mesh:** `tailscale status` showing all four nodes
 - [ ] **06 — GPG Signing:** pinentry prompt mid-commit over SSH; `git log --show-signature` with "Good signature"
 - [ ] Commit scrubbed images under `docs/portfolio/<project>/` (no tokens, passwords, or full Tailscale IPs)
 - [ ] Publish `docs/portfolio/README.md` index with thumbnail links
+
+---
+
+## Phase 9 — SSH Hardening (Security / Pending Apply)
+> Triggered by failed login attempts from `127.0.0.1` using identity-derived
+> usernames. Runbook: `docs/portfolio/07-ssh-hardening/README.md`
+
+- [x] Confirm key-based login works over Tailscale **before** disabling passwords
+- [x] Disable password auth: `PasswordAuthentication no` in `/etc/ssh/sshd_config.d/10-hardening.conf` (`sshd -t` then restart)
+- [x] Scope port 22 to the mesh: replace broad `22/tcp` UFW rule with `allow in on tailscale0 to any port 22 proto tcp`
+- [x] Verify: password auth refused, `systemctl status ssh` still `active (running)`
+- [ ] (If recurs) capture the local client PID during a burst: `sudo ss -tnp | grep 127.0.0.1:22` → `ps -fp <PID>`
+- [ ] Capture evidence screenshots into `docs/portfolio/07-ssh-hardening/` and flip status to Complete
 
 ---
 

@@ -15,8 +15,7 @@
   kinks manually to reinforce system comprehension.
 
 ## 2. Infrastructure & Docker Constraints
-- **Platform Context:** Ubuntu Server on a physical Dell PowerEdge T430, plus a
-  Lenovo ThinkPad T430 sandbox.
+- **Platform Context:** Headless Lenovo ThinkPad T430 running Ubuntu Server LTS.
 - **Network Isolation Principle:** All application stacks must be rigorously
   isolated from the home LAN to protect production household traffic.
 - **Network Mode Rules:**
