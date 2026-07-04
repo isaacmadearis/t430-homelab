@@ -1,6 +1,6 @@
 # 06 — GPG Commit Signing
 
-**Key:** Ed25519 keypair, key ID `D3126B22975A0FEB`.
+**Key:** Ed25519 keypair, key ID `644A3FB7D755AA80`.
 All commits are cryptographically signed — enforced globally via `commit.gpgsign=true`.
 Pinentry is bound to the active SSH TTY via `export GPG_TTY=$(tty)` before each session.
 
@@ -20,7 +20,7 @@ Pinentry is bound to the active SSH TTY via `export GPG_TTY=$(tty)` before each 
 
 ### Signed Commit Log
 > Command: `git log --show-signature -3`
-> Expected: `gpg: Good signature from "..."` and key ID `D3126B22975A0FEB` for recent commits.
+> Expected: `gpg: Good signature from "..."` and key ID `644A3FB7D755AA80` for recent commits.
 
 <!-- Drop screenshot here and update the filename -->
 ![git log show-signature](git-log-show-signature.png)
