@@ -11,8 +11,7 @@ Credentials externalized to `.env`; both containers volume-mapped for persistenc
 > Browse to `https://wp.madearlabs.com` in a clean browser session.
 > Expected: WordPress front page loads over HTTPS with valid padlock.
 
-<!-- Drop screenshot here and update the filename -->
-![WordPress live site](wp-live-site.png)
+![WordPress live site](wp-frontend-live.png)
 
 ---
 
