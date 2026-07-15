@@ -42,8 +42,6 @@ services:
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - wp_data:/var/www/html
-    ports:
-      - "8080:80"
     networks:
       - lab-isolated-net
 
