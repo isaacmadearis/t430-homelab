@@ -81,12 +81,11 @@ sudo ufw allow 22/tcp
 
 ---
 
-### After — Password Auth Refused
-> Command: `ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no imadear@t430-server`
-> Expected: `Permission denied (publickey)`.
+### After — Password Auth Disabled
+> Command: `sudo sshd -T | grep -i passwordauthentication`
+> Expected: `passwordauthentication no`.
 
-<!-- Drop screenshot here and update the filename -->
-![Password auth refused](ssh-password-refused.png)
+![Password authentication disabled in sshd config](sshd-passwordauth-disabled.png)
 
 ---
 
