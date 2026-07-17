@@ -5,6 +5,16 @@ Credentials externalized to `.env`; both containers volume-mapped for persistenc
 
 ---
 
+## Architecture
+
+Public traffic enters via the Cloudflare tunnel (`cf_tunnel`), reaches the
+WordPress presentation layer (`wp_frontend`), which talks to the MySQL data
+tier (`wp_database`) — all three isolated on the `lab-isolated-net` bridge.
+
+![WordPress stack architecture](wordpress-stack-architecture.png)
+
+---
+
 ## Evidence
 
 ### Live Site

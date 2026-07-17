@@ -6,6 +6,16 @@ CasaOS dashboard reachable at `https://casa.madearlabs.com` with valid TLS.
 
 ---
 
+## Architecture
+
+Caddy proves domain ownership by creating a DNS TXT record through the
+Cloudflare API; Let's Encrypt validates it and returns the certificate —
+no inbound port ever opens.
+
+![DNS-01 issuance flow](caddy-dns01-flow.png)
+
+---
+
 ## Evidence
 
 ### Padlock + Certificate Details
