@@ -1,6 +1,6 @@
 # 07 — SSH Hardening (Key-Only Auth + Tailscale-Scoped Ingress)
 
-**Status:** Runbook / Pending Apply
+**Status:** Applied
 
 Lock down `sshd` so brute-force credential attempts become impossible and the
 listener is reachable only over the Tailscale mesh — not the home LAN.
@@ -76,7 +76,6 @@ sudo ufw allow 22/tcp
 > Expected: failed attempts from `127.0.0.1`.
 > Scrub: redact the literal email/username strings before committing the image.
 
-<!-- Drop screenshot here and update the filename -->
 ![SSH localhost attempts before hardening](ssh-attempts-before.png)
 
 ---
@@ -93,7 +92,6 @@ sudo ufw allow 22/tcp
 > Command: `sudo ufw status numbered`
 > Expected: a rule allowing `22/tcp` only `on tailscale0`; no broad `22/tcp ALLOW Anywhere`.
 
-<!-- Drop screenshot here and update the filename -->
 ![UFW SSH scoped to tailscale0](ufw-ssh-tailscale-scoped.png)
 
 ---
@@ -102,5 +100,4 @@ sudo ufw allow 22/tcp
 > Command: `systemctl status ssh`
 > Expected: `active (running)`, `sshd -t` pre-start check passed.
 
-<!-- Drop screenshot here and update the filename -->
 ![SSH service healthy post-hardening](ssh-status-after.png)
