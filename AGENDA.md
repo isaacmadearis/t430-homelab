@@ -144,6 +144,24 @@
 
 ---
 
+## Phase 10 — Recipe Manager Ingress (Upcoming)
+> Self-hosted recipe manager (Mealie) exposed at `recipes.madearlabs.com`
+
+- [ ] Create a dedicated `projects/mealie/docker-compose.yml` stack
+      (`ghcr.io/mealie-recipes/mealie:latest`)
+- [ ] Mount a named volume `mealie_data` at `/app/data` for recipe/image persistence
+- [ ] Attach to `lab-isolated-net` as `external: true` with **no host port exposure** (web UI on internal :9000)
+- [ ] Source config from `.env` (`TZ`, `BASE_URL`, `ALLOW_SIGNUP=false`) and add a `.env.example` with placeholders — no cleartext in Git
+- [ ] Set a memory limit on the container (T430 CPU/RAM guardrail)
+- [ ] Add public hostname `recipes.madearlabs.com` → `http://mealie:9000`
+      as a Cloudflare Zero Trust tunnel rule (reuse the existing `cf_tunnel` agent)
+- [ ] First login: change the default admin credentials immediately, then create household user accounts
+- [ ] Validate end-to-end: container healthy → `recipes.madearlabs.com` loads over HTTPS
+- [ ] Capture `docker network inspect lab-isolated-net` screenshot as network proof
+- [ ] Add Mealie data volume to the S3 backup plan
+
+---
+
 ## Standing Maintenance Checklist
 
 - [ ] GPG signing active: `export GPG_TTY=$(tty)` before any commit session over SSH
